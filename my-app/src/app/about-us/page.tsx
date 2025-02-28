@@ -1,10 +1,10 @@
 import Navigation from '@/components/navigation';
 
-export default function Test() {
+export default function Page() {
   return (
     <div>
-      <h1>Test 페이지입니다.</h1>
       <Navigation />
+      <h1>About Us 페이지입니다.</h1>
     </div>
   );
 }
