@@ -1,5 +1,5 @@
 import { Key } from 'react';
-import { API_URL } from '../app/(home)/page';
+import { API_URL } from '../app/constants';
 import styles from '../app/styles/movie-videos.module.css';
 
 async function getVideos(id: string) {
