@@ -20,7 +20,7 @@ export default async function Home() {
 
   return (
     <div className={styles.container}>
-      {movies.map((movie: { id: Key; title: string; poster_path: string }) => (
+      {movies.map((movie: { key: Key; id: string; title: string; poster_path: string }) => (
         // <div key={movie.id}>
         //   <Image src={movie.poster_path} alt={movie.title} width={200} height={300}></Image>
         //   <Link href={`/movies/${movie.id}`}>{movie.title}</Link>
