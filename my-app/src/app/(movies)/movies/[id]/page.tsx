@@ -2,10 +2,10 @@ import { Suspense } from 'react';
 import MovieVideos from '@/components/movie-video';
 import MovieInfo from '@/components/movie-info';
 
-export default async function MovieDetail({ params: { id } }: { params: { id: string } }) {
+export default async function MovieDetail({ params }: { params: { id: string } }) {
+  const { id } = await params;
   // const movie = await getMovie(id);
   // const videos = await getVideos(id);
-
   return (
     <div>
       <h3>Movie detail page</h3>
@@ -18,7 +18,3 @@ export default async function MovieDetail({ params: { id } }: { params: { id: st
     </div>
   );
 }
-
-/*
- * 동적 라우팅: react-router의 :id와 같은 역할!
- */
