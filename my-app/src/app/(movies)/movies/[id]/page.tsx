@@ -1,13 +1,15 @@
 import { Suspense } from 'react';
 import MovieInfo, { getMovie } from '@/components/movie-info';
 import MovieVideos from '@/components/movie-video';
+import { Params } from 'next/dist/server/request/params';
 
 interface IParams {
-  params: { id: string };
+  params: Params;
 }
 
-export async function generateMetadata({ params }: IParams) {
-  const { id } = await params;
+// 메타데이터 생성 함수
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const { id } = params; // params에서 id를 직접 추출
   const movie = await getMovie(id);
   return {
     title: movie.title, // 동적인 URL Params를 이용한 메타데이터 생성
@@ -15,7 +17,7 @@ export async function generateMetadata({ params }: IParams) {
 }
 
 export default async function MovieDetail({ params }: IParams) {
-  const { id } = await params;
+  const { id } = params;
 
   return (
     <div>

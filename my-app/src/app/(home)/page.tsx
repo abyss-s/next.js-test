@@ -2,7 +2,6 @@
 
 import { useQuery } from '@tanstack/react-query';
 import Movie from '@/components/movie';
-import styles from '@/app/styles/home.module.css';
 import { fetchMovies } from '@/app/apis/movies';
 
 export default function Home() {
@@ -20,7 +19,7 @@ export default function Home() {
   if (isError) return <div>Error loading movies: {error.message}</div>;
 
   return (
-    <div className={styles.container}>
+    <div className="container home">
       {movies.map((movie) => (
         <Movie key={movie.id} id={movie.id} poster_path={movie.poster_path} title={movie.title} />
       ))}

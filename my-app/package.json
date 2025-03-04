@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "scss": "sass --watch styles/styles.scss:dist/styles.css --source-map dist/styles.css.map"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.66.11",

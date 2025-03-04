@@ -1,138 +1,133 @@
-@import 'tailwindcss';
-
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
-body {
-  line-height: 1;
-}
-ol,
-ul {
-  list-style: none;
-}
-blockquote,
-q {
-  quotes: none;
-}
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
+// 스타일 변수 명명
+$font-family: system-ui;
+$background-color: black;
+$text-color: white;
+$border-radius: 10px;
+$hover-opacity: 1;
+$default-opacity: 0.7;
+$transition-duration: 0.3s;
+$nav-background-color: #2d2d2d;
+$nav-border-radius: 50px;
+$nav-padding: 20px 0;
+$nav-width: 40%;
 
 body {
-  font-family: system-ui;
-  background-color: black;
-  color: white;
+  font-family: $font-family;
+  background-color: $background-color;
+  color: $text-color;
   padding: 150px 0;
+  // text-color: $text-color;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+
+  &.home {
+    grid-template-columns: repeat(5, 1fr);
+    max-width: 90%;
+
+    a {
+      text-decoration-line: none;
+      text-decoration-color: $text-color;
+      color: $text-color;
+    }
+  }
+
+  &.movie-info {
+    grid-template-columns: 1fr 2fr;
+    gap: 50px;
+  }
+
+  &.movie-videos {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  iframe {
+    border-radius: $border-radius;
+    opacity: 0.8;
+    transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+// Movie styles
+.movie {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 20px;
+  cursor: pointer;
+  place-items: center;
+
+  img {
+    max-width: 100%;
+    min-height: 100%;
+    border-radius: $border-radius;
+    transition: opacity $transition-duration ease-in-out;
+    opacity: $default-opacity;
+
+    &:hover {
+      opacity: $hover-opacity;
+    }
+  }
+
+  a {
+    text-align: center;
+  }
+}
+
+// movie-info
+.poster {
+  border-radius: 20px;
+  max-width: 70%;
+  place-self: center;
+}
+
+.title {
+  color: white;
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+// Navigation styles
+.nav {
+  background-color: $nav-background-color;
+  position: fixed;
+  width: $nav-width;
+  margin: 0 auto;
+  top: 20px;
+  border-radius: $nav-border-radius;
+  padding: $nav-padding;
+  left: 50%;
+  z-index: 20;
+  transform: translateX(-50%);
+
+  ul {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+
+    li {
+      list-style: none;
+      transition: all 0.1s ease-in-out;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
 }
