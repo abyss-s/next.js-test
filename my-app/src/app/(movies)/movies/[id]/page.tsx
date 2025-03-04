@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
-import MovieInfo, { getMovie } from '../../../../components/movie-info';
-import MovieVideos from '../../../../components/movie-video';
+import MovieInfo, { getMovie } from '@/components/movie-info';
+import MovieVideos from '@/components/movie-video';
 
 interface IParams {
   params: { id: string };

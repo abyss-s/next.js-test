@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from '../app/styles/movie.module.css';
+import styles from '@/app/styles/movie.module.css';
 import { useRouter } from 'next/navigation';
 
 interface IMovieProps {

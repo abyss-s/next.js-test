@@ -1,9 +1,9 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import Movie from '../../components/movie';
-import styles from '../styles/home.module.css';
-import { fetchMovies } from '../apis/movies';
+import Movie from '@/components/movie';
+import styles from '@/app/styles/home.module.css';
+import { fetchMovies } from '@/app/apis/movies';
 
 export default function Home() {
   const {
