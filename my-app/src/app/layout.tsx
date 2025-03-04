@@ -1,21 +1,20 @@
-'use client'; // 리액트 쿼리 사용을 위해 클라이언트 단으로 변경
-
 import './styles/globals.css';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Metadata } from 'next';
 
-const queryClient = new QueryClient(); // 쿼리 클라이언트 생성
+/*
+ * default Metadata
+ * - metadata 객체를 정의했을 때는 <head>에서 <title>과 <meta>를 정의할 필요가 없음
+ * - 13 버전 이상에서 선언 시 Next.js가 알아서 처리해줌.
+ */
+export const metadata: Metadata = {
+  title: 'Movie',
+  description: 'Intro',
+};
 
-// 쿼리 프로바이더로 레이아웃 감싸주기
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>
-        <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
