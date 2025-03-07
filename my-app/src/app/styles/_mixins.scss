@@ -1,0 +1,29 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin transition($property: all, $duration: $transition-duration, $timing: ease-in-out) {
+  transition: $property $duration $timing;
+}
+
+@mixin hover-effect {
+  opacity: $default-opacity;
+  @include transition(opacity);
+
+  &:hover {
+    opacity: $hover-opacity;
+  }
+}
+
+@mixin container-grid($columns) {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: $columns;
+}

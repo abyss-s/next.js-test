@@ -1,4 +1,7 @@
-// 스타일 변수 명명
+@import 'variables';
+@import 'mixins';
+
+// Variables
 $font-family: system-ui;
 $background-color: black;
 $text-color: white;
@@ -11,14 +14,46 @@ $nav-border-radius: 50px;
 $nav-padding: 20px 0;
 $nav-width: 40%;
 
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin transition($property: all, $duration: $transition-duration, $timing: ease-in-out) {
+  transition: $property $duration $timing;
+}
+
+@mixin hover-effect {
+  opacity: $default-opacity;
+  @include transition(opacity);
+
+  &:hover {
+    opacity: $hover-opacity;
+  }
+}
+
+@mixin container-grid($columns) {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: $columns;
+}
+
+// Base styles
 body {
   font-family: $font-family;
   background-color: $background-color;
   color: $text-color;
   padding: 150px 0;
-  // text-color: $text-color;
 }
 
+// Container styles
 .container {
   width: 80%;
   margin: 0 auto;
@@ -26,7 +61,7 @@ body {
   gap: 20px;
 
   &.home {
-    grid-template-columns: repeat(5, 1fr);
+    @include container-grid(repeat(5, 1fr));
     max-width: 90%;
 
     a {
@@ -37,24 +72,19 @@ body {
   }
 
   &.movie-info {
-    grid-template-columns: 1fr 2fr;
+    @include container-grid(1fr 2fr);
     gap: 50px;
   }
 
   &.movie-videos {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    @include container-grid(repeat(auto-fit, minmax(250px, 1fr)));
     margin-top: 100px;
     padding-bottom: 100px;
   }
 
   iframe {
     border-radius: $border-radius;
-    opacity: 0.8;
-    transition: opacity 0.2s ease-in-out;
-
-    &:hover {
-      opacity: 1;
-    }
+    @include hover-effect;
   }
 }
 
@@ -70,12 +100,7 @@ body {
     max-width: 100%;
     min-height: 100%;
     border-radius: $border-radius;
-    transition: opacity $transition-duration ease-in-out;
-    opacity: $default-opacity;
-
-    &:hover {
-      opacity: $hover-opacity;
-    }
+    @include hover-effect;
   }
 
   a {
@@ -83,7 +108,7 @@ body {
   }
 }
 
-// movie-info
+// Movie info styles
 .poster {
   border-radius: 20px;
   max-width: 70%;
@@ -97,8 +122,7 @@ body {
 }
 
 .info {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   margin-top: 20px;
   gap: 20px;
 }
@@ -117,13 +141,12 @@ body {
   transform: translateX(-50%);
 
   ul {
-    display: flex;
-    justify-content: center;
+    @include flex-center;
     gap: 50px;
 
     li {
       list-style: none;
-      transition: all 0.1s ease-in-out;
+      @include transition(all, 0.1s);
 
       &:hover {
         transform: scale(1.05);
