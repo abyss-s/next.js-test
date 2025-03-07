@@ -1,4 +1,4 @@
-### SCSS 개요
+# SCSS 개요
 
 [Sass 공식 문서](https://sass-lang.com/documentation)  
 [SaSS & SCSS 소개 & 설치 세팅 총정리](https://inpa.tistory.com/entry/SCSS-%F0%9F%92%8E-SassSCSS-%EB%9E%80-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EC%BB%B4%ED%8C%8C%EC%9D%BC)
